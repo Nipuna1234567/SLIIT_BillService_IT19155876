@@ -66,7 +66,7 @@ output += "<td><input name='btnUpdate'type='button' value='Update'class='btnUpda
  }
  catch (Exception e)
  {
- output = "Error while reading the items.";
+ output = "Error while reading the Bills.";
  System.err.println(e.getMessage());
  }
  return output;
@@ -120,7 +120,7 @@ public String updateBill(String billID,String cusbID, String paymentID,String ac
  }
  
  // create a prepared statement
- String query = "UPDATE bill SET cusbID=?,paymentID=?,accountNo=?,bDate=?,accountNo=?,ppUnit=?,usedUnit=?,tbAmount=? WHERE billID=?";
+ String query = "UPDATE bill SET cusbID=?,paymentID=?,accountNo=?,bDate=?,ppUnit=?,usedUnit=?,tbAmount=? WHERE billID=?";
  PreparedStatement preparedStmt = con.prepareStatement(query);
  
  // binding values
@@ -128,11 +128,10 @@ public String updateBill(String billID,String cusbID, String paymentID,String ac
  preparedStmt.setString(2, paymentID);
  preparedStmt.setString(3, accountNo);
  preparedStmt.setString(4, bDate);
- preparedStmt.setString(5, accountNo);
- preparedStmt.setString(6, ppUnit);
- preparedStmt.setString(7, usedUnit);
- preparedStmt.setString(8, tbAmount);
- preparedStmt.setInt(9, Integer.parseInt(billID));
+ preparedStmt.setString(5, ppUnit);
+ preparedStmt.setString(6, usedUnit);
+ preparedStmt.setString(7, tbAmount);
+ preparedStmt.setInt(8, Integer.parseInt(billID));
 
  //execute the statement
 preparedStmt.execute();
